@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://quabanwvhb30"]
+
+[ext_resource type="Script" uid="uid://chl5pi5gt6weq" path="res://scripts/item.gd" id="1_4gq7n"]
+[ext_resource type="Texture2D" uid="uid://c82ujsa6leme2" path="res://assets/rock.png" id="2_vljjh"]
+[ext_resource type="Texture2D" uid="uid://bm6ujefav5xpi" path="res://assets/paper.png" id="3_ro5b8"]
+[ext_resource type="Texture2D" uid="uid://dyqehu5oqyjw5" path="res://assets/scissors.png" id="4_d265e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vp5n"]
+size = Vector2(93, 98)
+
+[node name="item" type="Node2D" unique_id=538959340]
+script = ExtResource("1_4gq7n")
+
+[node name="rock" type="Sprite2D" parent="." unique_id=538370050]
+unique_name_in_owner = true
+visible = false
+position = Vector2(51, 51)
+texture = ExtResource("2_vljjh")
+
+[node name="paper" type="Sprite2D" parent="." unique_id=102305047]
+unique_name_in_owner = true
+visible = false
+position = Vector2(51, 50)
+texture = ExtResource("3_ro5b8")
+
+[node name="scissors" type="Sprite2D" parent="." unique_id=2142473461]
+unique_name_in_owner = true
+visible = false
+position = Vector2(51, 50)
+texture = ExtResource("4_d265e")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1615458068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=456932858]
+position = Vector2(51, 50)
+shape = SubResource("RectangleShape2D_5vp5n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,18 @@
+{
+	"blob":{
+		"will_hurt": [],
+		"hurt_by": []
+	},
+	"rock":{
+		"will_hurt": ["scissors"],
+		"hurt_by": ["paper"]
+	},
+	"scissors":{
+		"will_hurt": ["paper"],
+		"hurt_by": ["rock"]
+	},
+	"paper":{
+		"will_hurt": ["rock"],
+		"hurt_by": ["scissors"]
+	}
+}

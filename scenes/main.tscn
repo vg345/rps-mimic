@@ -1,0 +1,361 @@
+[gd_scene format=3 uid="uid://c5blvqsjdhwt7"]
+
+[ext_resource type="Script" uid="uid://bx4jv3jjcjgkl" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://car6582xwnu3m" path="res://assets/plain.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://d0bblwqngahi6" path="res://assets/grid.png" id="3_tbgi4"]
+[ext_resource type="FontFile" uid="uid://gsmx538veodt" path="res://assets/Rye/Rye-Regular.ttf" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://ch3maouaxwotg" path="res://scenes/player.tscn" id="5_tbgi4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jyhfs"]
+font = ExtResource("3_tefeu")
+font_size = 75
+font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
+font_size = 40
+font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[node name="main" type="Node2D" unique_id=669931760]
+script = ExtResource("1_o5qli")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=2107004121]
+modulate = Color(0.9471324, 0.47664404, 0.5145032, 1)
+position = Vector2(962.25, 543.25)
+scale = Vector2(10.855932, 6.132768)
+texture = ExtResource("2_jyhfs")
+
+[node name="Title" type="Label" parent="." unique_id=1103617863]
+offset_left = 20.0
+offset_top = 131.0
+offset_right = 576.0
+offset_bottom = 514.0
+text = "Rock Paper Scissors"
+label_settings = SubResource("LabelSettings_jyhfs")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Title2" type="Label" parent="." unique_id=766738354]
+offset_left = 37.0
+offset_top = 613.0
+offset_right = 567.0
+offset_bottom = 900.0
+text = "WASD/arrows to move.
+E/Space to return to normal form. "
+label_settings = SubResource("LabelSettings_85g3d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="setup" type="Node2D" parent="." unique_id=162585198]
+
+[node name="pt1" type="Marker2D" parent="setup" unique_id=591177276]
+unique_name_in_owner = true
+position = Vector2(588, 152)
+
+[node name="grid" type="Sprite2D" parent="setup" unique_id=1428602887]
+modulate = Color(1, 1, 1, 0.8784314)
+position = Vector2(988, 552)
+texture = ExtResource("3_tbgi4")
+
+[node name="spawner" type="Sprite2D" parent="setup" unique_id=1752854049]
+position = Vector2(648, -55.000008)
+rotation = 0.7853982
+scale = Vector2(1.62, 1.6399999)
+texture = ExtResource("2_jyhfs")
+
+[node name="player" parent="." unique_id=1979686032 instance=ExtResource("5_tbgi4")]
+unique_name_in_owner = true
+position = Vector2(990, 451)
+
+[node name="spawnTimer" type="Timer" parent="." unique_id=2079189383]
+unique_name_in_owner = true
+autostart = true
+
+[node name="over" type="Node2D" parent="." unique_id=2015304401]
+unique_name_in_owner = true
+visible = false
+
+[node name="restartButton" type="Button" parent="over" unique_id=610984424]
+offset_left = 1459.0
+offset_top = 822.0
+offset_right = 1792.0
+offset_bottom = 951.0
+
+[node name="Label" type="Label" parent="over/restartButton" unique_id=202491162]
+layout_mode = 0
+offset_right = 333.0
+offset_bottom = 129.0
+text = "RESTART"
+label_settings = SubResource("LabelSettings_tbgi4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_hs" type="Label" parent="over" unique_id=1157892699]
+unique_name_in_owner = true
+offset_left = 1445.0
+offset_top = 698.0
+offset_right = 1843.0
+offset_bottom = 820.0
+text = "New high score!!"
+label_settings = SubResource("LabelSettings_tefeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=1304186550]
+unique_name_in_owner = true
+offset_left = 1383.0
+offset_top = 150.0
+offset_right = 1625.0
+offset_bottom = 217.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="Score" unique_id=1001789366]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 212.0
+offset_top = 2.0
+offset_right = 454.0
+offset_bottom = 71.0
+text = "0"
+label_settings = SubResource("LabelSettings_tipki")
+vertical_alignment = 1
+
+[node name="HS" type="Label" parent="." unique_id=322706871]
+unique_name_in_owner = true
+offset_left = 1431.0
+offset_top = 245.0
+offset_right = 1673.0
+offset_bottom = 312.0
+text = "High Score:"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hs" type="Label" parent="HS" unique_id=240592380]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 289.0
+offset_top = -3.0
+offset_right = 531.0
+offset_bottom = 66.0
+text = "0"
+label_settings = SubResource("LabelSettings_tipki")
+vertical_alignment = 1
+
+[node name="items" type="Node2D" parent="." unique_id=223851321]
+unique_name_in_owner = true
+position = Vector2(589, 152)
+
+[node name="points" type="Node2D" parent="." unique_id=926914029]
+unique_name_in_owner = true
+
+[node name="pt1" type="Marker2D" parent="points" unique_id=169246604]
+position = Vector2(588, 152)
+
+[node name="pt2" type="Marker2D" parent="points" unique_id=1142931261]
+position = Vector2(588, 252)
+
+[node name="pt3" type="Marker2D" parent="points" unique_id=591236491]
+position = Vector2(588, 352)
+
+[node name="pt4" type="Marker2D" parent="points" unique_id=1815629228]
+position = Vector2(588, 452)
+
+[node name="pt5" type="Marker2D" parent="points" unique_id=2089660948]
+position = Vector2(588, 552)
+
+[node name="pt6" type="Marker2D" parent="points" unique_id=116909927]
+position = Vector2(588, 652)
+
+[node name="pt7" type="Marker2D" parent="points" unique_id=408367881]
+position = Vector2(588, 752)
+
+[node name="pt8" type="Marker2D" parent="points" unique_id=1355520798]
+position = Vector2(588, 852)
+
+[node name="pt9" type="Marker2D" parent="points" unique_id=113344914]
+position = Vector2(688, 852)
+
+[node name="pt10" type="Marker2D" parent="points" unique_id=1852961726]
+position = Vector2(788, 852)
+
+[node name="pt11" type="Marker2D" parent="points" unique_id=1684598526]
+position = Vector2(888, 852)
+
+[node name="pt12" type="Marker2D" parent="points" unique_id=1831312680]
+position = Vector2(990, 852)
+
+[node name="pt13" type="Marker2D" parent="points" unique_id=1956889084]
+position = Vector2(1090, 852)
+
+[node name="pt14" type="Marker2D" parent="points" unique_id=560460277]
+position = Vector2(1190, 852)
+
+[node name="pt15" type="Marker2D" parent="points" unique_id=36824514]
+position = Vector2(1290, 852)
+
+[node name="pt16" type="Marker2D" parent="points" unique_id=1157239923]
+position = Vector2(1290, 752)
+
+[node name="pt17" type="Marker2D" parent="points" unique_id=1708973270]
+position = Vector2(1290, 652)
+
+[node name="pt18" type="Marker2D" parent="points" unique_id=1755329184]
+position = Vector2(1290, 552)
+
+[node name="pt19" type="Marker2D" parent="points" unique_id=956774173]
+position = Vector2(1290, 452)
+
+[node name="pt20" type="Marker2D" parent="points" unique_id=2079372484]
+position = Vector2(1290, 352)
+
+[node name="pt21" type="Marker2D" parent="points" unique_id=344866862]
+position = Vector2(1290, 252)
+
+[node name="pt22" type="Marker2D" parent="points" unique_id=840824080]
+position = Vector2(1290, 152)
+
+[node name="pt23" type="Marker2D" parent="points" unique_id=1178791016]
+position = Vector2(1188, 152)
+
+[node name="pt24" type="Marker2D" parent="points" unique_id=490630684]
+position = Vector2(1088, 152)
+
+[node name="pt25" type="Marker2D" parent="points" unique_id=861603394]
+position = Vector2(988, 152)
+
+[node name="pt26" type="Marker2D" parent="points" unique_id=1847025701]
+position = Vector2(888, 152)
+
+[node name="pt27" type="Marker2D" parent="points" unique_id=701736960]
+position = Vector2(788, 152)
+
+[node name="pt28" type="Marker2D" parent="points" unique_id=1302546909]
+position = Vector2(688, 152)
+
+[node name="pt29" type="Marker2D" parent="points" unique_id=1567130363]
+position = Vector2(688, 252)
+
+[node name="pt30" type="Marker2D" parent="points" unique_id=280018499]
+position = Vector2(688, 352)
+
+[node name="pt31" type="Marker2D" parent="points" unique_id=1822316292]
+position = Vector2(688, 452)
+
+[node name="pt32" type="Marker2D" parent="points" unique_id=2062675521]
+position = Vector2(688, 552)
+
+[node name="pt33" type="Marker2D" parent="points" unique_id=1575744236]
+position = Vector2(688, 652)
+
+[node name="pt34" type="Marker2D" parent="points" unique_id=696494254]
+position = Vector2(688, 752)
+
+[node name="pt35" type="Marker2D" parent="points" unique_id=2092436946]
+position = Vector2(788, 752)
+
+[node name="pt36" type="Marker2D" parent="points" unique_id=341266126]
+position = Vector2(888, 752)
+
+[node name="pt37" type="Marker2D" parent="points" unique_id=2069473536]
+position = Vector2(988, 752)
+
+[node name="pt38" type="Marker2D" parent="points" unique_id=1490394808]
+position = Vector2(1088, 752)
+
+[node name="pt39" type="Marker2D" parent="points" unique_id=1254515253]
+position = Vector2(1188, 752)
+
+[node name="pt40" type="Marker2D" parent="points" unique_id=49200897]
+position = Vector2(1188, 652)
+
+[node name="pt41" type="Marker2D" parent="points" unique_id=2098033517]
+position = Vector2(1188, 552)
+
+[node name="pt42" type="Marker2D" parent="points" unique_id=107510846]
+position = Vector2(1188, 452)
+
+[node name="pt43" type="Marker2D" parent="points" unique_id=299179330]
+position = Vector2(1188, 352)
+
+[node name="pt44" type="Marker2D" parent="points" unique_id=309415882]
+position = Vector2(1188, 252)
+
+[node name="pt45" type="Marker2D" parent="points" unique_id=97448340]
+position = Vector2(1088, 252)
+
+[node name="pt46" type="Marker2D" parent="points" unique_id=1581644753]
+position = Vector2(988, 252)
+
+[node name="pt47" type="Marker2D" parent="points" unique_id=570471331]
+position = Vector2(888, 252)
+
+[node name="pt48" type="Marker2D" parent="points" unique_id=210495943]
+position = Vector2(788, 252)
+
+[node name="pt49" type="Marker2D" parent="points" unique_id=1426977593]
+position = Vector2(788, 352)
+
+[node name="pt50" type="Marker2D" parent="points" unique_id=256976950]
+position = Vector2(788, 452)
+
+[node name="pt51" type="Marker2D" parent="points" unique_id=1894196521]
+position = Vector2(788, 552)
+
+[node name="pt52" type="Marker2D" parent="points" unique_id=1289106580]
+position = Vector2(788, 652)
+
+[node name="pt53" type="Marker2D" parent="points" unique_id=2106455513]
+position = Vector2(888, 652)
+
+[node name="pt54" type="Marker2D" parent="points" unique_id=1681551587]
+position = Vector2(988, 652)
+
+[node name="pt55" type="Marker2D" parent="points" unique_id=491784580]
+position = Vector2(1088, 652)
+
+[node name="pt56" type="Marker2D" parent="points" unique_id=426716280]
+position = Vector2(1088, 552)
+
+[node name="pt57" type="Marker2D" parent="points" unique_id=1898631783]
+position = Vector2(1088, 452)
+
+[node name="pt58" type="Marker2D" parent="points" unique_id=284922320]
+position = Vector2(1088, 352)
+
+[node name="pt59" type="Marker2D" parent="points" unique_id=224426073]
+position = Vector2(988, 352)
+
+[node name="pt60" type="Marker2D" parent="points" unique_id=1400345282]
+position = Vector2(888, 352)
+
+[node name="pt61" type="Marker2D" parent="points" unique_id=922340982]
+position = Vector2(888, 452)
+
+[node name="pt62" type="Marker2D" parent="points" unique_id=651800455]
+position = Vector2(888, 552)
+
+[node name="pt63" type="Marker2D" parent="points" unique_id=1987331541]
+position = Vector2(988, 552)
+
+[connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="over/restartButton" to="." method="_on_restart_button_pressed"]
