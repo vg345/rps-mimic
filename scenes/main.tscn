@@ -4,63 +4,134 @@
 [ext_resource type="Texture2D" uid="uid://car6582xwnu3m" path="res://assets/plain.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://d0bblwqngahi6" path="res://assets/grid.png" id="3_tbgi4"]
 [ext_resource type="FontFile" uid="uid://gsmx538veodt" path="res://assets/Rye/Rye-Regular.ttf" id="3_tefeu"]
+[ext_resource type="AudioStream" uid="uid://d8ksvro464ed" path="res://assets/Sketchbook 2025-12-14 LOOP.ogg" id="4_o6xl0"]
+[ext_resource type="FontFile" uid="uid://4j8ngusqxh3d" path="res://assets/Stylish/Stylish-Regular.ttf" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ch3maouaxwotg" path="res://scenes/player.tscn" id="5_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://ddtrsbcrli0xv" path="res://assets/8_bit_negative.wav" id="8_tipki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jyhfs"]
 font = ExtResource("3_tefeu")
 font_size = 75
 font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
+font_size = 35
+
 [sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
-font_size = 40
+font = ExtResource("4_tefeu")
+font_size = 35
 font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
+font = ExtResource("3_tefeu")
+font_size = 50
+font_color = Color(0.28237537, 0.07222096, 0.06269771, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font = ExtResource("3_tefeu")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_choun"]
+font = ExtResource("4_tefeu")
+font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
 font_size = 35
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
+font = ExtResource("4_tefeu")
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
-font_size = 50
+[sub_resource type="LabelSettings" id="LabelSettings_eb6dy"]
+font = ExtResource("4_tefeu")
+font_size = 60
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.74509805, 0, 0, 0.45882353)
+shadow_offset = Vector2(3, 3)
 
 [node name="main" type="Node2D" unique_id=669931760]
 script = ExtResource("1_o5qli")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=2107004121]
-modulate = Color(0.9471324, 0.47664404, 0.5145032, 1)
+modulate = Color(0.46260393, 0.9172394, 0.82658345, 1)
 position = Vector2(962.25, 543.25)
 scale = Vector2(10.855932, 6.132768)
 texture = ExtResource("2_jyhfs")
 
 [node name="Title" type="Label" parent="." unique_id=1103617863]
-offset_left = 20.0
-offset_top = 131.0
-offset_right = 576.0
-offset_bottom = 514.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 562.0
+offset_bottom = 389.0
 text = "Rock Paper Scissors"
 label_settings = SubResource("LabelSettings_jyhfs")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Title2" type="Label" parent="." unique_id=766738354]
-offset_left = 37.0
-offset_top = 613.0
-offset_right = 567.0
-offset_bottom = 900.0
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1579285575]
+unique_name_in_owner = true
+stream = ExtResource("4_o6xl0")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamGameOver" type="AudioStreamPlayer2D" parent="." unique_id=973510566]
+unique_name_in_owner = true
+stream = ExtResource("8_tipki")
+
+[node name="mute" type="Button" parent="." unique_id=585603789]
+offset_left = 1824.0
+offset_top = 24.0
+offset_right = 1898.0
+offset_bottom = 91.0
+
+[node name="Label" type="Label" parent="mute" unique_id=583467842]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 67.0
+text = "M"
+label_settings = SubResource("LabelSettings_ya4ey")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Node2D" parent="." unique_id=1194639802]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Instructions" unique_id=716739965]
+position = Vector2(284.5, 430.5)
+scale = Vector2(2.8644068, 1.4971752)
+texture = ExtResource("2_jyhfs")
+
+[node name="instructions" type="Label" parent="Instructions" unique_id=766738354]
+offset_left = 41.0
+offset_top = 288.0
+offset_right = 543.0
+offset_bottom = 575.0
 text = "WASD/arrows to move.
-E/Space to return to normal form. "
+E/Space to return to normal form. 
+Buttons for touchscreen"
 label_settings = SubResource("LabelSettings_85g3d")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="closeInst" type="Button" parent="Instructions" unique_id=1905690557]
+offset_left = 31.0
+offset_top = 298.0
+offset_right = 105.0
+offset_bottom = 365.0
+
+[node name="Label" type="Label" parent="Instructions/closeInst" unique_id=1959628370]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 67.0
+text = "x"
+label_settings = SubResource("LabelSettings_ya4ey")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="setup" type="Node2D" parent="." unique_id=162585198]
 
@@ -79,50 +150,16 @@ rotation = 0.7853982
 scale = Vector2(1.62, 1.6399999)
 texture = ExtResource("2_jyhfs")
 
-[node name="player" parent="." unique_id=1979686032 instance=ExtResource("5_tbgi4")]
-unique_name_in_owner = true
-position = Vector2(990, 451)
-
 [node name="spawnTimer" type="Timer" parent="." unique_id=2079189383]
 unique_name_in_owner = true
 autostart = true
 
-[node name="over" type="Node2D" parent="." unique_id=2015304401]
-unique_name_in_owner = true
-visible = false
-
-[node name="restartButton" type="Button" parent="over" unique_id=610984424]
-offset_left = 1459.0
-offset_top = 822.0
-offset_right = 1792.0
-offset_bottom = 951.0
-
-[node name="Label" type="Label" parent="over/restartButton" unique_id=202491162]
-layout_mode = 0
-offset_right = 333.0
-offset_bottom = 129.0
-text = "RESTART"
-label_settings = SubResource("LabelSettings_tbgi4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="new_hs" type="Label" parent="over" unique_id=1157892699]
-unique_name_in_owner = true
-offset_left = 1445.0
-offset_top = 698.0
-offset_right = 1843.0
-offset_bottom = 820.0
-text = "New high score!!"
-label_settings = SubResource("LabelSettings_tefeu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Score" type="Label" parent="." unique_id=1304186550]
 unique_name_in_owner = true
-offset_left = 1383.0
-offset_top = 150.0
-offset_right = 1625.0
-offset_bottom = 217.0
+offset_left = 1418.0
+offset_top = 161.0
+offset_right = 1583.0
+offset_bottom = 228.0
 text = "Score:"
 label_settings = SubResource("LabelSettings_o6xl0")
 horizontal_alignment = 1
@@ -131,20 +168,20 @@ vertical_alignment = 1
 [node name="score" type="Label" parent="Score" unique_id=1001789366]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 212.0
-offset_top = 2.0
-offset_right = 454.0
-offset_bottom = 71.0
+offset_left = 197.0
+offset_top = 1.0
+offset_right = 439.0
+offset_bottom = 70.0
 text = "0"
 label_settings = SubResource("LabelSettings_tipki")
 vertical_alignment = 1
 
 [node name="HS" type="Label" parent="." unique_id=322706871]
 unique_name_in_owner = true
-offset_left = 1431.0
-offset_top = 245.0
-offset_right = 1673.0
-offset_bottom = 312.0
+offset_left = 1416.0
+offset_top = 244.0
+offset_right = 1716.0
+offset_bottom = 311.0
 text = "High Score:"
 label_settings = SubResource("LabelSettings_o6xl0")
 horizontal_alignment = 1
@@ -153,10 +190,10 @@ vertical_alignment = 1
 [node name="hs" type="Label" parent="HS" unique_id=240592380]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 289.0
-offset_top = -3.0
-offset_right = 531.0
-offset_bottom = 66.0
+offset_left = 322.0
+offset_top = 2.0
+offset_right = 564.0
+offset_bottom = 71.0
 text = "0"
 label_settings = SubResource("LabelSettings_tipki")
 vertical_alignment = 1
@@ -164,6 +201,10 @@ vertical_alignment = 1
 [node name="items" type="Node2D" parent="." unique_id=223851321]
 unique_name_in_owner = true
 position = Vector2(589, 152)
+
+[node name="player" parent="." unique_id=1979686032 instance=ExtResource("5_tbgi4")]
+unique_name_in_owner = true
+position = Vector2(990, 451)
 
 [node name="points" type="Node2D" parent="." unique_id=926914029]
 unique_name_in_owner = true
@@ -357,5 +398,110 @@ position = Vector2(888, 552)
 [node name="pt63" type="Marker2D" parent="points" unique_id=1987331541]
 position = Vector2(988, 552)
 
+[node name="controls" type="Node2D" parent="." unique_id=2145184174]
+
+[node name="downButton" type="Button" parent="controls" unique_id=416546711]
+offset_left = 285.00006
+offset_top = 789.00006
+offset_right = 401.1811
+offset_bottom = 915.18115
+rotation = 0.7853982
+
+[node name="leftButton" type="Button" parent="controls" unique_id=1663767036]
+offset_left = 195.0
+offset_top = 697.00006
+offset_right = 311.18103
+offset_bottom = 823.18115
+rotation = 0.7853982
+
+[node name="rightButton" type="Button" parent="controls" unique_id=867692750]
+offset_left = 384.00003
+offset_top = 692.00006
+offset_right = 500.18106
+offset_bottom = 818.18115
+rotation = 0.7853982
+
+[node name="resetButton" type="Button" parent="controls" unique_id=273857306]
+offset_left = 1633.1024
+offset_top = 648.89746
+offset_right = 1803.0237
+offset_bottom = 823.3068
+rotation = 0.7853982
+
+[node name="Label" type="Label" parent="controls/resetButton" unique_id=1019163010]
+layout_mode = 0
+offset_left = -7.07098
+offset_top = 89.24038
+offset_right = 127.47211
+offset_bottom = 221.24039
+rotation = -0.7853982
+text = "Reset"
+label_settings = SubResource("LabelSettings_choun")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="upButton" type="Button" parent="controls" unique_id=1107656773]
+offset_left = 293.00003
+offset_top = 600.0
+offset_right = 409.18106
+offset_bottom = 726.1811
+rotation = 0.7853982
+
+[node name="over" type="Node2D" parent="." unique_id=2015304401]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="over" unique_id=992242518]
+modulate = Color(0.4627451, 0.91764706, 0.827451, 1)
+position = Vector2(992, 555)
+scale = Vector2(2.9039552, 2.8700569)
+texture = ExtResource("2_jyhfs")
+
+[node name="restartButton" type="Button" parent="over" unique_id=610984424]
+offset_left = 821.0
+offset_top = 585.0
+offset_right = 1154.0
+offset_bottom = 714.0
+
+[node name="Label" type="Label" parent="over/restartButton" unique_id=202491162]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 333.0
+offset_bottom = 131.0
+text = "RESTART"
+label_settings = SubResource("LabelSettings_tbgi4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_hs" type="Label" parent="over" unique_id=1157892699]
+unique_name_in_owner = true
+visible = false
+offset_left = 784.0
+offset_top = 482.0
+offset_right = 1182.0
+offset_bottom = 604.0
+text = "New high score!!"
+label_settings = SubResource("LabelSettings_tefeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="new_hs2" type="Label" parent="over" unique_id=1813441777]
+unique_name_in_owner = true
+offset_left = 786.0
+offset_top = 377.0
+offset_right = 1184.0
+offset_bottom = 499.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_eb6dy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Instructions/closeInst" to="." method="_on_close_inst_pressed"]
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="controls/downButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="controls/leftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="controls/rightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="controls/resetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="controls/upButton" to="." method="_on_up_button_pressed"]
 [connection signal="pressed" from="over/restartButton" to="." method="_on_restart_button_pressed"]
